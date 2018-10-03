@@ -4,6 +4,7 @@
   <h1>Sign In</h1>
   <form class="wtforms" action="" method="post" novalidate>
     {{ form.hidden_tag() }}
+    <div class="form-group">
     <p>
         {{ form.username.label }}<br>
         {{ form.username(size=32) }}
@@ -11,6 +12,8 @@
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
+  </div>
+  <div class="form-group">
     <p>
         {{ form.password.label }}<br>
         {{ form.password(size=32) }}
@@ -18,8 +21,13 @@
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
+  </div>
+  <div class="form-group form-check">
     <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+  </div>
+  <div class="form-group">
     <p>{{ form.submit() }}</p>
+  </div>
   </form>
    <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
 {% endblock %}

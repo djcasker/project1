@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1>Hello, {{ current_user.username }}</h1>
+{% for book in books %}
+<div>
+<p>{{ book.name }}</b> {{ book.author.name }} <em>Rated {{ book.rating }} out of 5.</em></p>
+
+</div>
+{% endfor %}
+{% endblock %}

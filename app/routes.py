@@ -8,14 +8,14 @@ from app import db
 from app.forms import RegistrationForm
 from datetime import datetime
 from app.forms import EditProfileForm
-
+from app.models import Books
 
 @app.route("/")
 @app.route("/index")
 @login_required
 def index():
     user = {'username': 'Satyam'}
-    books = [
+    bookstemp = [
     {
         'author': {'name': 'Jeff Keller'},
         'name': 'Attitude Is EveryThing',
@@ -27,7 +27,8 @@ def index():
         'rating': '3.5',
     },
     ]
-    return render_template("index.html", title="Home", books=books)
+    three_books = Books.query.all()[:3]
+    return render_template("index.html", title="Home", books=three_books)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
